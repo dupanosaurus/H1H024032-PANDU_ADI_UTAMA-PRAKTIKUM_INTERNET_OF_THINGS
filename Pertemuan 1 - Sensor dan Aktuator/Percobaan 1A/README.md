@@ -5,10 +5,10 @@ Percobaan 1A berfokus pada proses akuisisi data suhu dan kelembapan menggunakan 
 Program dimulai dengan memanggil library DHT dan menentukan pin serta jenis sensor yang digunakan. ESP8266 kemudian melakukan inisialisasi komunikasi serial dan sensor DHT11 pada fungsi `setup()`. Pada fungsi `loop()`, program membaca data suhu dan kelembapan dari sensor secara berulang. Hasil pembacaan diperiksa menggunakan fungsi `isnan()`. Jika data tidak valid, program menampilkan pesan kegagalan. Jika data berhasil dibaca, program menampilkan nilai suhu dan kelembapan pada Serial Monitor, kemudian menunggu selama tiga detik sebelum melakukan pembacaan berikutnya.
 
 ## Penjelasan Setiap Fungsi
-- `setup()`\
+- `setup()`
 Fungsi `setup()` dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi serial dengan `Serial.begin(115200)` dan menginisialisasi sensor menggunakan `dht.begin()`.
 
-- `loop()`\
+- `loop()`
 Fungsi `loop()` dijalankan secara berulang selama ESP8266 aktif. Pada fungsi ini, program membaca nilai kelembapan menggunakan `dht.readHumidity()` dan suhu menggunakan `dht.readTemperature()`. Program kemudian memeriksa data yang diperoleh dan menampilkan hasil pembacaan melalui Serial Monitor.
 
 - `dht.readHumidity()`
