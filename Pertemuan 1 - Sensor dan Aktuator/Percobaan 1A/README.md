@@ -1,24 +1,15 @@
 ## Detail Percobaan
-Percobaan 1A berfokus pada proses akuisisi data suhu dan kelembapan menggunakan sensor DHT11 yang terhubung dengan ESP8266.
-Program membaca nilai suhu dan kelembapan secara berkala, kemudian menampilkan hasil pembacaan tersebut melalui Serial Monitor.
-Program juga melakukan pemeriksaan terhadap data yang diperoleh untuk memastikan sensor berhasil memberikan nilai yang valid.
+Percobaan 1A berfokus pada proses akuisisi data suhu dan kelembapan menggunakan sensor DHT11 yang terhubung dengan ESP8266. Program membaca nilai suhu dan kelembapan secara berkala, kemudian menampilkan hasil pembacaan tersebut melalui Serial Monitor. Program juga melakukan pemeriksaan terhadap data yang diperoleh untuk memastikan sensor berhasil memberikan nilai yang valid.
 
 ## Penjelasan Code
-Program dimulai dengan memanggil library DHT dan menentukan pin serta jenis sensor yang digunakan.
-ESP8266 kemudian melakukan inisialisasi komunikasi serial dan sensor DHT11 pada fungsi `setup()`.
-Pada fungsi `loop()`, program membaca data suhu dan kelembapan dari sensor secara berulang.
-Hasil pembacaan diperiksa menggunakan fungsi `isnan()`. Jika data tidak valid, program menampilkan pesan kegagalan.
-Jika data berhasil dibaca, program menampilkan nilai suhu dan kelembapan pada Serial Monitor, kemudian menunggu selama tiga detik sebelum melakukan pembacaan berikutnya.
+Program dimulai dengan memanggil library DHT dan menentukan pin serta jenis sensor yang digunakan. ESP8266 kemudian melakukan inisialisasi komunikasi serial dan sensor DHT11 pada fungsi `setup()`. Pada fungsi `loop()`, program membaca data suhu dan kelembapan dari sensor secara berulang. Hasil pembacaan diperiksa menggunakan fungsi `isnan()`. Jika data tidak valid, program menampilkan pesan kegagalan. Jika data berhasil dibaca, program menampilkan nilai suhu dan kelembapan pada Serial Monitor, kemudian menunggu selama tiga detik sebelum melakukan pembacaan berikutnya.
 
 ## Penjelasan Setiap Fungsi
 - `setup()`\
-Fungsi `setup()` dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset.
-Fungsi ini digunakan untuk memulai komunikasi serial dengan `Serial.begin(115200)` dan menginisialisasi sensor menggunakan `dht.begin()`.
+Fungsi `setup()` dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi serial dengan `Serial.begin(115200)` dan menginisialisasi sensor menggunakan `dht.begin()`.
 
 - `loop()`\
-Fungsi `loop()` dijalankan secara berulang selama ESP8266 aktif.
-Pada fungsi ini, program membaca nilai kelembapan menggunakan `dht.readHumidity()` dan suhu menggunakan `dht.readTemperature()`.
-Program kemudian memeriksa data yang diperoleh dan menampilkan hasil pembacaan melalui Serial Monitor.
+Fungsi `loop()` dijalankan secara berulang selama ESP8266 aktif. Pada fungsi ini, program membaca nilai kelembapan menggunakan `dht.readHumidity()` dan suhu menggunakan `dht.readTemperature()`. Program kemudian memeriksa data yang diperoleh dan menampilkan hasil pembacaan melalui Serial Monitor.
 
 - `dht.readHumidity()`
 Fungsi ini digunakan untuk membaca nilai kelembapan udara dari sensor DHT11. Nilai yang diperoleh disimpan ke dalam variabel kelembaban.
@@ -30,10 +21,7 @@ Fungsi ini digunakan untuk membaca nilai suhu dari sensor DHT11. Nilai yang dipe
 Fungsi `isnan()` digunakan untuk memeriksa apakah hasil pembacaan sensor memiliki nilai yang tidak valid atau Not a Number (NaN).
 
 ## Penjelasan Percabangan atau Conditional
-Program menggunakan percabangan `if-else` untuk memeriksa hasil pembacaan sensor.
-Kondisi `if (isnan(kelembaban) || isnan(suhu))` akan bernilai benar apabila data kelembapan atau suhu tidak valid.
-Program kemudian menampilkan pesan bahwa pembacaan sensor gagal.
-Jika kedua data berhasil dibaca, bagian else akan dijalankan untuk menampilkan nilai suhu dan kelembapan pada Serial Monitor.
+Program menggunakan percabangan `if-else` untuk memeriksa hasil pembacaan sensor. Kondisi `if (isnan(kelembaban) || isnan(suhu))` akan bernilai benar apabila data kelembapan atau suhu tidak valid.Program kemudian menampilkan pesan bahwa pembacaan sensor gagal. Jika kedua data berhasil dibaca, bagian else akan dijalankan untuk menampilkan nilai suhu dan kelembapan pada Serial Monitor.
 
 ## Library atau Dependencies
 Program memerlukan library berikut:
