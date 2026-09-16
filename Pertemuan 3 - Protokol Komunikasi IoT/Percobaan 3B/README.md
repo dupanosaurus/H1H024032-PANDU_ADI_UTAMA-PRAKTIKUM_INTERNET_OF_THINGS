@@ -84,4 +84,9 @@ Library utama dipanggil dalam program menggunakan:
 ```
 
 ## Jawaban Pertanyaan Percobaan 3B
-1. p
+1. Apa fungsi dari topic pada protokol MQTT, dan mengapa topic yang digunakan perlu dibuat unik?
+- Topic pada MQTT berfungsi sebagai alamat atau jalur untuk menentukan tempat data dipublikasikan dan diterima oleh client. Topic perlu dibuat unik agar data dari beberapa perangkat tidak tercampur dan setiap perangkat dapat menggunakan jalur komunikasi yang berbeda. 
+2. Jelaskan fungsi dari perintah `client.loop()` yang dipanggil pada setiap iterasi `loop()`!
+- `client.loop()` berfungsi untuk menjaga komunikasi MQTT tetap berjalan dan memproses pesan atau status koneksi dari broker. Fungsi ini perlu dipanggil secara berkala agar koneksi MQTT dapat tetap dipertahankan.
+3. Apa yang akan terjadi apabila koneksi ke broker MQTT terputus di tengah program berjalan?
+- Apabila koneksi broker MQTT terputus, `client.connected()` akan bernilai `false`. Program kemudian menjalankan fungsi `hubungkanMQTT()` untuk mencoba menghubungkan kembali ESP8266 ke broker. Program akan terus mencoba sampai koneksi berhasil, kemudian pengiriman data dapat dilanjutkan. 
