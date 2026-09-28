@@ -6,7 +6,7 @@ Program dimulai dengan memanggil library DHT dan menentukan pin serta jenis sens
 
 ## Penjelasan Setiap Fungsi
 - `setup()`\
-Fungsi `setup()` dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi serial dengan `Serial.begin(115200)` dan menginisialisasi sensor menggunakan `dht.begin()`.
+Fungsi `setup()` dijalankan satu kali ketika  pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi serial dengan `Serial.begin(115200)` dan menginisialisasi sensor menggunakan `dht.begin()`.
 
 - `loop()`\
 Fungsi `loop()` dijalankan secara berulang selama ESP8266 aktif. Pada fungsi ini, program membaca nilai kelembapan menggunakan `dht.readHumidity()` dan suhu menggunakan `dht.readTemperature()`. Program kemudian memeriksa data yang diperoleh dan menampilkan hasil pembacaan melalui Serial Monitor.
@@ -32,11 +32,11 @@ Program memerlukan library berikut:
 Library utama dipanggil dalam program menggunakan: `#include <DHT.h>`
 
 ## Jawaban Pertanyaan Percobaan 1A
-1. Gambarkan diagram alur (flowchart) proses akuisisi data sensor DHT22 pada program di atas!
+1. Gambarkan diagram alur (flowchart) proses akuisisi data sensor DHT11 pada program di atas!
 - <img width="579" height="802" alt="Diagram Tanpa Judul drawio" src="https://github.com/user-attachments/assets/feb93240-66c0-42ae-a349-ef40ad4b5458" />
 2. Apa fungsi dari perintah `isnan()` pada program tersebut?
 - Fungsi `isnan()` digunakan untuk memeriksa apakah data yang diperoleh dari sensor memiliki nilai NaN (Not a Number) atau tidak valid. Pada program ini, fungsi tersebut memeriksa hasil pembacaan suhu dan kelembaban sehingga program dapat menampilkan pesan kesalahan apabila sensor gagal memberikan data yang benar. 
-3. Jelaskan mengapa diperlukan jeda (delay) minimal sekitar 2 detik antar pembacaan sensor DHT22!
+3. Jelaskan mengapa diperlukan jeda (delay) minimal sekitar 2 detik antar pembacaan sensor DHT11!
 - Jeda diperlukan agar sensor memiliki waktu yang cukup untuk melakukan pembacaan kondisi suhu dan kelembaban sebelum data berikutnya diambil. Jika pembacaan dilakukan terlalu cepat, hasil yang diperoleh dapat menjadi tidak stabil atau pembacaan sensor dapat gagal. Pada program yang digunakan, pembacaan dilakukan setiap 3 detik agar sensor memiliki waktu yang cukup sebelum melakukan pembacaan kembali. 
 4. Modifikasi program agar data suhu dan kelembaban dirata-ratakan dari 5 kali pembacaan sebelum ditampilkan, dan berikan penjelasan di setiap baris kode yang ditambahkan dalam bentuk README.md!
 
