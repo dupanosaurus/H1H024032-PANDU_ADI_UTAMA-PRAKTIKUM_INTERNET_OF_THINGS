@@ -89,13 +89,10 @@ Library utama dipanggil dalam program menggunakan:
 ## Jawaban Pertanyaan Percobaan 4A
 1.  Gambarkan diagram alur (flowchart) proses penerimaan dan pemrosesan pesan pada fungsi callback di atas!
 <img width="722" height="812" alt="Diagram Tanpa Judul drawio" src="https://github.com/user-attachments/assets/b99dad16-14e4-48f2-ad0b-e1c9144f5bcc" />
-
 2. Apa yang akan terjadi apabila pesan yang dipublikasikan bukan merupakan format JSON yang valid?
 - Apabila pesan yang diterima bukan merupakan format JSON yang valid, proses `deserializeJson()` akan menghasilkan error parsing. Program kemudian masuk ke kondisi `if (error)` dan menampilkan pesan kegagalan pada Serial Monitor. Data tersebut tidak diproses lebih lanjut sebagai perintah untuk mengendalikan LED.
-
 3. Jelaskan mengapa fungsi `client.subscribe()` dipanggil di dalam fungsi `hubungkanMQTT()`, bukan di dalam `setup()`!
 - Fungsi `client.subscribe()` diletakkan di dalam `hubungkanMQTT()` karena fungsi tersebut dijalankan setiap kali ESP8266 berhasil membuat koneksi atau melakukan reconnect ke MQTT broker. Setelah koneksi MQTT terputus, status subscription dapat hilang sehingga ESP8266 perlu melakukan subscribe kembali setelah berhasil terhubung.
-
 4. Modifikasi program agar data JSON yang diterima juga memuat nilai intensitas (misalnya `{"perintah": "ON", "intensitas": 200}`) yang digunakan untuk mengatur kecerahan LED menggunakan PWM `(analogWrite/ledcWrite)`, dan berikan penjelasan di setiap baris kode yang ditambahkan dalam bentuk README.md 
 
 ```cpp
