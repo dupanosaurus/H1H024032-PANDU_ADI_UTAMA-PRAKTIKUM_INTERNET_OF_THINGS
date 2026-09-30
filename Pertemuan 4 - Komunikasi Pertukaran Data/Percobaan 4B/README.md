@@ -5,8 +5,10 @@ Percobaan 4B berfokus pada proses pertukaran data dua arah antara ESP8266 dan MQ
 Program dimulai dengan memanggil library ESP8266WiFi untuk menghubungkan ESP8266 ke jaringan WiFi, PubSubClient untuk melakukan komunikasi MQTT, ArduinoJson untuk membuat dan membaca data JSON, serta DHT untuk membaca sensor DHT11. Variabel topicData digunakan sebagai topic untuk mengirim data suhu, sedangkan topicPerintah digunakan untuk menerima perintah pengendalian LED. Sensor DHT11 menggunakan GPIO4 dan LED menggunakan GPIO5. Variabel waktuTerakhirPublish digunakan untuk menyimpan waktu pengiriman data terakhir, sedangkan intervalPublish menentukan interval pengiriman setiap 5 detik. Fungsi callback() digunakan untuk menerima pesan MQTT, mengubah payload menjadi String, melakukan parsing JSON, dan mengambil nilai perintah untuk mengendalikan LED. Fungsi hubungkanWiFi() digunakan untuk menghubungkan ESP8266 ke WiFi, sedangkan hubungkanMQTT() digunakan untuk membuat koneksi ke broker dan melakukan subscribe pada topic perintah. Pada setup(), komunikasi Serial, pin LED, sensor DHT11, WiFi, MQTT broker, dan callback dikonfigurasi. Pada loop(), program memeriksa koneksi MQTT dan menjalankan client.loop(), kemudian menggunakan millis() untuk memeriksa apakah interval 5 detik telah tercapai. Jika interval terpenuhi, sensor DHT11 membaca suhu, data dimasukkan ke dalam JSON, kemudian dikirim ke MQTT broker menggunakan client.publish().
 
 ## Penjelasan Setiap Fungsi
-setup()
-Fungsi setup() dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi Serial, mengatur pin LED, memulai sensor DHT11, menghubungkan ESP8266 ke WiFi, mengatur MQTT broker, dan mendaftarkan callback.
+- `setup()`\
+Fungsi `setup()` dijalankan satu kali ketika ESP8266 pertama kali dinyalakan atau di-reset. Fungsi ini digunakan untuk memulai komunikasi Serial, mengatur pin LED, memulai sensor DHT11, menghubungkan ESP8266 ke WiFi, mengatur MQTT broker, dan mendaftarkan
+
+callback.
 loop()
 Fungsi loop() dijalankan secara berulang selama ESP8266 aktif. Fungsi ini digunakan untuk memeriksa koneksi MQTT, memproses pesan yang masuk, membaca sensor DHT11, membuat data JSON, dan mengirim data suhu setiap 5 detik.
 callback()
@@ -66,13 +68,13 @@ Program memerlukan library dan board package berikut:
 1. **ESP8266WiFi**\
    Digunakan untuk menghubungkan ESP8266 ke jaringan WiFi.
 2. **PubSubClient**\
-  Digunakan untuk melakukan komunikasi MQTT antara ESP8266 dan MQTT broker, termasuk proses koneksi, subscribe, penerimaan pesan melalui callback, dan pemeliharaan koneksi menggunakan `client.loop()`.
+   Digunakan untuk melakukan komunikasi MQTT antara ESP8266 dan MQTT broker, termasuk proses koneksi, subscribe, penerimaan pesan melalui callback, dan pemeliharaan koneksi menggunakan `client.loop()`.
 3. **ArduinoJson**\
-  Digunakan untuk membaca dan memproses data yang dikirim dalam format JSON.
+   Digunakan untuk membaca dan memproses data yang dikirim dalam format JSON.
 4. **DHT**\
-  Digunakan untuk membaca data suhu dari sensor DHT11. 
+   Digunakan untuk membaca data suhu dari sensor DHT11. 
 5. **Board package ESP8266**\
-  Digunakan agar program dapat dikompilasi dan diunggah ke board ESP8266 melalui Arduino IDE.
+   Digunakan agar program dapat dikompilasi dan diunggah ke board ESP8266 melalui Arduino IDE.
 
 Library utama dipanggil dalam program menggunakan:
 ```cpp
