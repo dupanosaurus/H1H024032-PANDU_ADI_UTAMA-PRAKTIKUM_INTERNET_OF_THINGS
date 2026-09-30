@@ -71,13 +71,13 @@ Program menggunakan beberapa percabangan `if` untuk menentukan kondisi koneksi d
 ## Library atau Dependencies
 Program memerlukan library dan board package berikut:
 1. **ESP8266WiFi**\
-Digunakan untuk menghubungkan ESP8266 ke jaringan WiFi.
+    Digunakan untuk menghubungkan ESP8266 ke jaringan WiFi.
 2. **PubSubClient**\
-Digunakan untuk melakukan komunikasi MQTT antara ESP8266 dan MQTT broker, termasuk proses koneksi, subscribe, penerimaan pesan melalui callback, dan pemeliharaan koneksi menggunakan `client.loop()`.
+    Digunakan untuk melakukan komunikasi MQTT antara ESP8266 dan MQTT broker, termasuk proses koneksi, subscribe, penerimaan pesan melalui callback, dan pemeliharaan koneksi menggunakan `client.loop()`.
 3. **ArduinoJson**\
-Digunakan untuk membaca dan memproses data yang dikirim dalam format JSON.
+    Digunakan untuk membaca dan memproses data yang dikirim dalam format JSON.
 4. **Board package ESP8266**\
-Digunakan agar program dapat dikompilasi dan diunggah ke board ESP8266 melalui Arduino IDE.
+    Digunakan agar program dapat dikompilasi dan diunggah ke board ESP8266 melalui Arduino IDE.
 
 Library utama dipanggil dalam program menggunakan:
 ```cpp
