@@ -8,7 +8,7 @@ int jumlah = 0;            // Jumlah sampel yang sudah terisi
 float suhuMin = 1000.0;
 float suhuMax = -1000.0;
 
-// Mock function pengganti sensor DHT22
+// Mock function pengganti sensor DHT11
 float bacaSuhuMock() {
     static unsigned long jumlahBaca = 0;
     jumlahBaca++;
