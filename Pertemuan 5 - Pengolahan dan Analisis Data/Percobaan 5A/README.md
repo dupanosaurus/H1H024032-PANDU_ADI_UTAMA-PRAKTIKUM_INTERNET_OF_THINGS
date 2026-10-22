@@ -1,12 +1,12 @@
 ## Detail Percobaan
-Percobaan 5A membahas pengolahan data suhu pada perangkat menggunakan filter *moving average* dan pencatatan suhu minimum serta maksimum. Pada kode yang digunakan, pembacaan sensor DHT22 digantikan oleh fungsi `bacaSuhuMock()` yang menghasilkan suhu simulasi, menambahkan *noise* kecil, dan memberikan lonjakan suhu setiap 25 pembacaan. Nilai suhu mentah diproses menggunakan rata-rata bergerak dari maksimal lima sampel terakhir. Program kemudian menampilkan suhu mentah, hasil *moving average*, suhu minimum, dan suhu maksimum pada Serial Monitor setiap dua detik.
+Percobaan 5A membahas pengolahan data suhu pada perangkat menggunakan filter *moving average* dan pencatatan suhu minimum serta maksimum. Pada kode yang digunakan, pembacaan sensor DHT11 digantikan oleh fungsi `bacaSuhuMock()` yang menghasilkan suhu simulasi, menambahkan *noise* kecil, dan memberikan lonjakan suhu setiap 25 pembacaan. Nilai suhu mentah diproses menggunakan rata-rata bergerak dari maksimal lima sampel terakhir. Program kemudian menampilkan suhu mentah, hasil *moving average*, suhu minimum, dan suhu maksimum pada Serial Monitor setiap dua detik.
 
 ## Penjelasan Code
 Program diawali dengan `#include <Arduino.h>` untuk menggunakan fungsi dasar Arduino. Konstanta `N` bernilai 5 sebagai jumlah maksimum sampel *moving average*, sedangkan `buffer[N]` menyimpan sampel suhu. Variabel `indeks` menunjukkan posisi penulisan data berikutnya dan `jumlah` mencatat banyak sampel yang sudah masuk ke buffer. Variabel `suhuMin` dan `suhuMax` diberi nilai awal yang sangat besar dan sangat kecil agar data pertama dapat memperbarui nilai minimum dan maksimum. Fungsi `bacaSuhuMock()` menghasilkan suhu simulasi dari suhu dasar yang berubah secara bertahap, ditambah *noise* acak. Setiap pembacaan kelipatan 25, suhu ditambah 8 °C untuk mensimulasikan lonjakan. Fungsi `hitungMovingAverage()` menyimpan nilai baru ke buffer, memperbarui indeks secara melingkar, lalu menghitung rata-rata sampel yang tersedia. Pada `setup()`, program memulai komunikasi Serial, menginisialisasi angka acak, dan menampilkan judul percobaan. Pada `loop()`, program mengambil suhu simulasi, menghitung *moving average*, memperbarui nilai minimum dan maksimum, menampilkan seluruh nilai ke Serial Monitor, lalu menunggu dua detik sebelum mengulang proses.
 
 ## Penjelasan Setiap Fungsi
 - `bacaSuhuMock()`\
-Menghasilkan data suhu simulasi sebagai pengganti pembacaan sensor DHT22. Variabel `jumlahBaca` menghitung jumlah pemanggilan fungsi. Suhu dasar dihitung menggunakan fungsi `sin()`, kemudian ditambahkan *noise* dari `random(-5, 6) * 0.1`. Setiap pembacaan kelipatan 25, suhu ditambah 8 °C. Fungsi mengembalikan nilai suhu melalui `return suhu`.
+Menghasilkan data suhu simulasi sebagai pengganti pembacaan sensor DHT11. Variabel `jumlahBaca` menghitung jumlah pemanggilan fungsi. Suhu dasar dihitung menggunakan fungsi `sin()`, kemudian ditambahkan *noise* dari `random(-5, 6) * 0.1`. Setiap pembacaan kelipatan 25, suhu ditambah 8 °C. Fungsi mengembalikan nilai suhu melalui `return suhu`.
 
 - `hitungMovingAverage(float nilaiBaru)`\
 Memasukkan suhu terbaru ke `buffer[indeks]`, lalu memajukan posisi indeks menggunakan `(indeks + 1) % N`. Jika jumlah sampel belum mencapai lima, nilai `jumlah` ditambah satu. Selanjutnya, perulangan `for` menjumlahkan seluruh sampel yang tersedia dan fungsi mengembalikan hasil pembagian total dengan jumlah sampel.
@@ -53,14 +53,14 @@ Program menggunakan komponen berikut:
 Menyediakan fungsi dasar yang digunakan program, termasuk komunikasi Serial, `delay()`, pembacaan analog, dan fungsi angka pseudoacak.
 2. **Fungsi matematika (`sin()`)**\
 Digunakan untuk menghasilkan perubahan suhu dasar pada fungsi `bacaSuhuMock()`. Fungsi matematika ini tersedia melalui lingkungan Arduino yang digunakan.
-3. **Board package ESP32**\
-Diperlukan agar program dapat dikompilasi dan diunggah ke board ESP32 melalui Arduino IDE.
+3. **Board package ESP8266**\
+Diperlukan agar program dapat dikompilasi dan diunggah ke board ESP8266 melalui Arduino IDE.
 
 Library utama dipanggil dalam program menggunakan:
 ```cpp
 #include <Arduino.h>
 ```
-Program ini tidak menggunakan library DHT karena fungsi `bacaSuhuMock()` menjadi pengganti sensor DHT22 sesuai keterangan pada buku catatan praktikum. Oleh karena itu, nilai yang ditampilkan merupakan data simulasi, bukan hasil pengukuran langsung dari sensor.
+Program ini tidak menggunakan library DHT karena fungsi `bacaSuhuMock()` menjadi pengganti sensor DHT11 sesuai keterangan pada buku catatan praktikum. Oleh karena itu, nilai yang ditampilkan merupakan data simulasi, bukan hasil pengukuran langsung dari sensor.
 
 ## Jawaban Pertanyaan Percobaan 5A
 1.Gambarkan diagram alur (flowchart) proses perhitungan moving average pada fungsi `hitungMovingAverage()`!
