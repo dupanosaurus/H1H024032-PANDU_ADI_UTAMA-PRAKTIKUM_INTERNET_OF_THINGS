@@ -19,7 +19,7 @@ PubSubClient client(espClient);
 
 unsigned long lastMsg = 0;
 
-// Mock function pengganti sensor DHT22
+// Mock function pengganti sensor DHT11
 float bacaSuhuMock() {
     static unsigned long jumlahBaca = 0;
     jumlahBaca++;
